@@ -1330,3 +1330,30 @@ body::before {
   border-color: rgba(126, 224, 176, 0.28);
 }
 
+.reveal-btn {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-light);
+  color: var(--accent);
+  margin-left: 0.5rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  letter-spacing: 0.03em;
+}
+
+.protected-contact-link:hover .reveal-btn {
+  background: var(--accent);
+  color: var(--btn-text);
+  border-color: var(--accent);
+}
+
+.protected-contact-link.revealed .reveal-btn {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+

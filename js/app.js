@@ -639,11 +639,6 @@ function initMobileMenu() {
   }
 }
 
-/* ==========================================================================
-   8. Anti-Bot & Anti-Scraper Contact Shield
-   Decodes obfuscated communication endpoints client-side using character-shifted base64
-   Prevents automated harvesting by scrapers, spider bots, and telemarketing crawlers
-   ========================================================================== */
 function initBotProtectedContacts() {
   function decodeToken(token) {
     if (!token) return '';
@@ -651,13 +646,14 @@ function initBotProtectedContacts() {
       const decoded = atob(token);
       return Array.from(decoded).map(c => String.fromCharCode(c.charCodeAt(0) - 3)).join('');
     } catch (e) {
-      console.error('Bot Shield decode failure', e);
       return '';
     }
   }
 
   const elements = document.querySelectorAll('.protected-contact-link');
-  elements.forEach(el => {
+
+  function revealElement(el) {
+    if (el.dataset.revealed === 'true') return;
     const encText = el.getAttribute('data-c-text');
     const encTel = el.getAttribute('data-c-tel');
     const prefix = el.getAttribute('data-prefix') || '';
@@ -667,10 +663,59 @@ function initBotProtectedContacts() {
       const realTel = decodeToken(encTel);
 
       el.href = 'tel:' + realTel;
-      el.textContent = prefix + realText;
-      el.setAttribute('title', 'Direct Call • Verified Line');
-      el.classList.add('hydrated');
+      const numSpan = el.querySelector('.contact-num-text');
+      const revealBtn = el.querySelector('.reveal-btn');
+
+      if (numSpan) {
+        numSpan.textContent = realText;
+      } else {
+        el.textContent = prefix + realText;
+      }
+
+      if (revealBtn) {
+        revealBtn.textContent = 'Verified ✓';
+      }
+
+      el.setAttribute('title', 'Direct Verified Line: ' + realText);
+      el.classList.add('revealed');
+      el.dataset.revealed = 'true';
     }
+  }
+
+  // 1. Reveal upon direct human interaction (click, hover, touch, focus)
+  elements.forEach(el => {
+    el.addEventListener('click', (e) => {
+      const wasRevealed = (el.dataset.revealed === 'true');
+      revealElement(el);
+      if (!wasRevealed) {
+        e.preventDefault();
+        setTimeout(() => {
+          if (el.href && el.href.startsWith('tel:')) {
+            window.location.href = el.href;
+          }
+        }, 150);
+      }
+    });
+
+    el.addEventListener('mouseenter', () => revealElement(el));
+    el.addEventListener('touchstart', () => revealElement(el), { passive: true });
+    el.addEventListener('focus', () => revealElement(el));
   });
+
+  // 2. Proof of Human Motion (defeats non-interactive scraping bots & automated DOM scrapers)
+  let humanGestures = 0;
+  function handleHumanMotion() {
+    humanGestures++;
+    if (humanGestures >= 2) {
+      elements.forEach(revealElement);
+      window.removeEventListener('mousemove', handleHumanMotion);
+      window.removeEventListener('scroll', handleHumanMotion);
+      window.removeEventListener('keydown', handleHumanMotion);
+    }
+  }
+
+  window.addEventListener('mousemove', handleHumanMotion, { passive: true });
+  window.addEventListener('scroll', handleHumanMotion, { passive: true });
+  window.addEventListener('keydown', handleHumanMotion, { passive: true });
 }
 
