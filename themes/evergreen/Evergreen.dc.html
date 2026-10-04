@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Evergreen theme</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#F2F7F4;font-family:'Plus Jakarta Sans',sans-serif;color:#0F3D2E}
+a{color:#0F3D2E;text-decoration:none}a:hover{color:#1A7A52}
+</style>
+</helmet>
+<div style="background:#F2F7F4;color:#0F3D2E;font-family:'Plus Jakarta Sans',sans-serif">
+<div style="max-width:1280px;margin:0 auto;padding:24px 40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+<div style="font-size:21px;font-weight:800;letter-spacing:-0.02em">modersys <span style="font-weight:500">group</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;background:#fff;border-radius:999px;padding:6px;font-size:14px;font-weight:600"><a href="#s" style="padding:10px 18px">Services</a><a href="#s" style="padding:10px 18px">Industries</a><a href="#s" style="padding:10px 18px">About</a><a href="#s" style="padding:10px 18px">Insights</a></div>
+<a href="#c" style="background:#0F3D2E;color:#fff;padding:13px 24px;border-radius:999px;font-weight:700;font-size:14px">Contact us</a>
+</div>
+<div style="max-width:1280px;margin:0 auto;padding:24px 40px 72px"><div style="background:#0F3D2E;border-radius:36px;padding:72px;display:flex;flex-wrap:wrap;gap:48px;align-items:center;color:#fff">
+<div style="flex:1 1 460px;display:flex;flex-direction:column;gap:24px">
+<div style="font-size:14px;font-weight:600;color:#7EE0B0">[Company descriptor]</div>
+<h1 style="margin:0;font-size:64px;line-height:1.05;letter-spacing:-0.035em;font-weight:800">Sustainable growth, engineered.</h1>
+<p style="margin:0;font-size:18px;line-height:1.6;color:#C9E4D7;max-width:500px">[One-sentence value proposition for Modersys Group goes here.]</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px"><a href="#s" style="background:{{accent}};color:#0F3D2E;padding:16px 28px;border-radius:999px;font-weight:700">Explore services</a><a href="#c" style="border:1.5px solid #4C8B72;color:#fff;padding:14px 28px;border-radius:999px;font-weight:700">Contact</a></div>
+</div>
+<div style="flex:1 1 360px;display:flex;flex-direction:column;gap:16px">
+<div style="background:#174D3B;border-radius:24px;padding:28px"><div style="font-size:48px;font-weight:800;color:{{accent}}">[00+]</div><div style="color:#C9E4D7">[Metric label]</div></div>
+<div style="display:flex;gap:16px"><div style="flex:1;background:#174D3B;border-radius:24px;padding:24px"><div style="font-size:36px;font-weight:800">[00%]</div><div style="color:#C9E4D7;font-size:14px">[Metric label]</div></div><div style="flex:1;background:{{accent}};border-radius:24px;padding:24px;color:#0F3D2E"><div style="font-size:36px;font-weight:800">[00]</div><div style="font-size:14px">[Metric label]</div></div></div>
+</div>
+</div></div>
+<div id="s" style="max-width:1280px;margin:0 auto;padding:24px 40px 72px">
+<h2 style="margin:0 0 36px;font-size:42px;letter-spacing:-0.03em;font-weight:800">Our expertise</h2>
+<div style="display:flex;flex-wrap:wrap;gap:20px">
+<div style="flex:1 1 280px;background:#fff;border-radius:28px;padding:32px"><div style="width:48px;height:48px;border-radius:50%;background:{{accent}};margin-bottom:60px"></div><h3 style="margin:0 0 10px;font-size:22px">[Service one]</h3><p style="margin:0;color:#41655A;line-height:1.6">[Short description of this service.]</p></div>
+<div style="flex:1 1 280px;background:#fff;border-radius:28px;padding:32px"><div style="width:48px;height:48px;border-radius:50%;background:{{accent}};margin-bottom:60px"></div><h3 style="margin:0 0 10px;font-size:22px">[Service two]</h3><p style="margin:0;color:#41655A;line-height:1.6">[Short description of this service.]</p></div>
+<div style="flex:1 1 280px;background:#fff;border-radius:28px;padding:32px"><div style="width:48px;height:48px;border-radius:50%;background:{{accent}};margin-bottom:60px"></div><h3 style="margin:0 0 10px;font-size:22px">[Service three]</h3><p style="margin:0;color:#41655A;line-height:1.6">[Short description of this service.]</p></div>
+<div style="flex:1 1 280px;background:#fff;border-radius:28px;padding:32px"><div style="width:48px;height:48px;border-radius:50%;background:{{accent}};margin-bottom:60px"></div><h3 style="margin:0 0 10px;font-size:22px">[Service four]</h3><p style="margin:0;color:#41655A;line-height:1.6">[Short description of this service.]</p></div>
+</div></div>
+<div id="c" style="max-width:1280px;margin:0 auto;padding:0 40px 72px"><div style="background:{{accent}};border-radius:36px;padding:64px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between"><h2 style="margin:0;font-size:40px;letter-spacing:-0.03em;color:#0F3D2E;max-width:560px;font-weight:800">Let's grow something lasting.</h2><a href="#c" style="background:#0F3D2E;color:#fff;padding:16px 28px;border-radius:999px;font-weight:700">Start a conversation</a></div></div>
+<div style="max-width:1280px;margin:0 auto;padding:0 40px 40px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;color:#41655A;font-size:14px"><span>© Modersys Group</span><span>modersysgroup.com</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#7EE0B0","options":["#7EE0B0","#F5C84C","#8EC5FF"]},"$preview":{"width":1440,"height":1560}}'>
+class Component extends DCLogic {
+renderVals() { return { accent: this.props.accent ?? '#7EE0B0' }; }
+}
+</script>
+</body>
+</html>
