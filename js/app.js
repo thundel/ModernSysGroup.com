@@ -55,6 +55,15 @@ function initThemeSwitcher() {
     crestImages.forEach(img => {
       img.src = logoSrc;
     });
+
+    // 3. Dynamic Hero Enterprise Tech Visual Synchronization
+    const heroTechSrc = isEvergreen 
+      ? 'assets/images/hero_enterprise_tech_evergreen.jpg' 
+      : 'assets/images/hero_enterprise_tech.jpg';
+    const heroImgs = document.querySelectorAll('.theme-adaptive-hero-img');
+    heroImgs.forEach(img => {
+      img.src = heroTechSrc;
+    });
   }
 
   window.setTheme = setTheme;

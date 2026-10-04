@@ -18,7 +18,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" id="siteFavicon">
   <link rel="alternate icon" href="favicon.svg" id="siteFaviconAlt">
 
-  <!-- Immediate Theme & Favicon Pre-loader (Prevents flash of mismatched theme/favicon) -->
+  <!-- Immediate Theme, Favicon & Visual Pre-loader (Prevents flash of mismatched theme assets) -->
   <script>
     (function() {
       try {
@@ -29,6 +29,14 @@
           var fa = document.getElementById('siteFaviconAlt');
           if (f) f.href = 'favicon-evergreen.svg';
           if (fa) fa.href = 'favicon-evergreen.svg';
+          document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.theme-adaptive-hero-img').forEach(function(img) {
+              img.src = 'assets/images/hero_enterprise_tech_evergreen.jpg';
+            });
+            document.querySelectorAll('.brand-crest-svg').forEach(function(img) {
+              img.src = 'assets/images/logo_icon_evergreen.svg';
+            });
+          });
         }
       } catch(e) {}
     })();
@@ -540,7 +548,7 @@
             <a href="#consultation" class="btn-pill btn-pill-primary" onclick="selectFormChip('ai')">Engage AI Engineering Team</a>
           </div>
           <div class="matrix-visual-box">
-            <img src="assets/images/hero_enterprise_tech.jpg" alt="Autonomous AI Systems &amp; Command Center" loading="lazy">
+            <img src="assets/images/hero_enterprise_tech.jpg" alt="Autonomous AI Systems &amp; Command Center" class="theme-adaptive-hero-img" loading="lazy">
           </div>
         </div>
 
@@ -604,7 +612,7 @@
             <a href="#consultation" class="btn-pill btn-pill-primary" onclick="selectFormChip('cloud')">Request Cloud Review</a>
           </div>
           <div class="matrix-visual-box">
-            <img src="assets/images/hero_enterprise_tech.jpg" alt="Cloud Infrastructure Engineering" loading="lazy">
+            <img src="assets/images/hero_enterprise_tech.jpg" alt="Cloud Infrastructure Engineering" class="theme-adaptive-hero-img" loading="lazy">
           </div>
         </div>
 
@@ -636,7 +644,7 @@
             <a href="#consultation" class="btn-pill btn-pill-primary" onclick="selectFormChip('security')">Request Security Audit</a>
           </div>
           <div class="matrix-visual-box">
-            <img src="assets/images/hero_enterprise_tech.jpg" alt="ModernSysGroup Cybersecurity Command Operations" loading="lazy">
+            <img src="assets/images/hero_enterprise_tech.jpg" alt="ModernSysGroup Cybersecurity Command Operations" class="theme-adaptive-hero-img" loading="lazy">
           </div>
         </div>
 
