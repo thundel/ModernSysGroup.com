@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScorecardQuiz();
   initDeepDiveModal();
   initConsultationForm();
+  initBotProtectedContacts();
   initMobileMenu();
   handleUrlHash();
 });
@@ -628,3 +629,39 @@ function initMobileMenu() {
     });
   }
 }
+
+/* ==========================================================================
+   8. Anti-Bot & Anti-Scraper Contact Shield
+   Decodes obfuscated communication endpoints client-side using character-shifted base64
+   Prevents automated harvesting by scrapers, spider bots, and telemarketing crawlers
+   ========================================================================== */
+function initBotProtectedContacts() {
+  function decodeToken(token) {
+    if (!token) return '';
+    try {
+      const decoded = atob(token);
+      return Array.from(decoded).map(c => String.fromCharCode(c.charCodeAt(0) - 3)).join('');
+    } catch (e) {
+      console.error('Bot Shield decode failure', e);
+      return '';
+    }
+  }
+
+  const elements = document.querySelectorAll('.protected-contact-link');
+  elements.forEach(el => {
+    const encText = el.getAttribute('data-c-text');
+    const encTel = el.getAttribute('data-c-tel');
+    const prefix = el.getAttribute('data-prefix') || '';
+
+    if (encText && encTel) {
+      const realText = decodeToken(encText);
+      const realTel = decodeToken(encTel);
+
+      el.href = 'tel:' + realTel;
+      el.textContent = prefix + realText;
+      el.setAttribute('title', 'Direct Call • Verified Line');
+      el.classList.add('hydrated');
+    }
+  });
+}
+

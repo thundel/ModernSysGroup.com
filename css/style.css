@@ -1289,3 +1289,44 @@ body::before {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Bot-Protected Contact Endpoints & Shield Badges
+   ========================================================================== */
+.protected-contact-link {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.protected-contact-link:hover {
+  color: var(--accent);
+  transform: translateX(2px);
+}
+
+.secure-badge {
+  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(0, 210, 255, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+[data-theme="evergreen"] .secure-badge {
+  background: rgba(126, 224, 176, 0.12);
+  color: var(--accent);
+  border-color: rgba(126, 224, 176, 0.28);
+}
+
