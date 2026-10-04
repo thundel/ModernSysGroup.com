@@ -663,59 +663,23 @@ function initBotProtectedContacts() {
       const realTel = decodeToken(encTel);
 
       el.href = 'tel:' + realTel;
-      const numSpan = el.querySelector('.contact-num-text');
-      const revealBtn = el.querySelector('.reveal-btn');
-
-      if (numSpan) {
-        numSpan.textContent = realText;
-      } else {
-        el.textContent = prefix + realText;
-      }
-
-      if (revealBtn) {
-        revealBtn.textContent = 'Verified ✓';
-      }
-
-      el.setAttribute('title', 'Direct Verified Line: ' + realText);
+      el.textContent = prefix + realText;
+      el.setAttribute('title', 'Call ' + realText);
       el.classList.add('revealed');
       el.dataset.revealed = 'true';
     }
   }
 
-  // 1. Reveal upon direct human interaction (click, hover, touch, focus)
+  // Only reveal phone numbers when user directly clicks on the masked number
   elements.forEach(el => {
     el.addEventListener('click', (e) => {
       const wasRevealed = (el.dataset.revealed === 'true');
-      revealElement(el);
       if (!wasRevealed) {
         e.preventDefault();
-        setTimeout(() => {
-          if (el.href && el.href.startsWith('tel:')) {
-            window.location.href = el.href;
-          }
-        }, 150);
+        revealElement(el);
       }
+      // If already revealed, default link behavior initiates the call via tel:
     });
-
-    el.addEventListener('mouseenter', () => revealElement(el));
-    el.addEventListener('touchstart', () => revealElement(el), { passive: true });
-    el.addEventListener('focus', () => revealElement(el));
   });
-
-  // 2. Proof of Human Motion (defeats non-interactive scraping bots & automated DOM scrapers)
-  let humanGestures = 0;
-  function handleHumanMotion() {
-    humanGestures++;
-    if (humanGestures >= 2) {
-      elements.forEach(revealElement);
-      window.removeEventListener('mousemove', handleHumanMotion);
-      window.removeEventListener('scroll', handleHumanMotion);
-      window.removeEventListener('keydown', handleHumanMotion);
-    }
-  }
-
-  window.addEventListener('mousemove', handleHumanMotion, { passive: true });
-  window.addEventListener('scroll', handleHumanMotion, { passive: true });
-  window.addEventListener('keydown', handleHumanMotion, { passive: true });
 }
 
